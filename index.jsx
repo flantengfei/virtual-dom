@@ -2,8 +2,11 @@ const view = count => {
   return <div className="container">123 <span>My Text</span></div>
 }
 
-const h = (type, props, ...children) => {
+const flatten = arr => [].concat.apply([], arr)
 
+const h = (type, props, ...children) => {
+  props = props || {}
+  return {type, props, children: flatten(children)}
 }
 
 const createElement = node =>
